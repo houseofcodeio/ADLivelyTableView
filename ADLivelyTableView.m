@@ -9,7 +9,7 @@
 #import "ADLivelyTableView.h"
 #import <QuartzCore/QuartzCore.h>
 
-NSTimeInterval ADLivelyDefaultDuration = 0.2;
+NSTimeInterval ADLivelyTableViewDefaultDuration = 0.2;
 
 CGFloat CGFloatSign(CGFloat value) {
     if (value < 0) {
@@ -24,14 +24,14 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformCurl = ^(CALayer * layer, f
     transform = CATransform3DTranslate(transform, -layer.bounds.size.width/2.0f, 0.0f, 0.0f);
     transform = CATransform3DRotate(transform, M_PI/2, 0.0f, 1.0f, 0.0f);
     layer.transform = CATransform3DTranslate(transform, layer.bounds.size.width/2.0f, 0.0f, 0.0f);
-    return ADLivelyDefaultDuration;
+    return ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformFade = ^(CALayer * layer, float speed){
     if (speed != 0.0f) { // Don't animate the initial state
         layer.opacity = 1.0f - fabs(speed);
     }
-    return 2 * ADLivelyDefaultDuration;
+    return 2 * ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformFan = ^(CALayer * layer, float speed){
@@ -40,7 +40,7 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformFan = ^(CALayer * layer, fl
     transform = CATransform3DRotate(transform, -M_PI/2 * speed, 0.0f, 0.0f, 1.0f);
     layer.transform = CATransform3DTranslate(transform, layer.bounds.size.width/2.0f, 0.0f, 0.0f);
     layer.opacity = 1.0f - fabs(speed);
-    return ADLivelyDefaultDuration;
+    return ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformFlip = ^(CALayer * layer, float speed){
@@ -49,7 +49,7 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformFlip = ^(CALayer * layer, f
     transform = CATransform3DRotate(transform, CGFloatSign(speed) * M_PI/2, 1.0f, 0.0f, 0.0f);
     layer.transform = CATransform3DTranslate(transform, 0.0f, -CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
     layer.opacity = 1.0f - fabs(speed);
-    return 2 * ADLivelyDefaultDuration;
+    return 2 * ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformHelix = ^(CALayer * layer, float speed){
@@ -58,7 +58,7 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformHelix = ^(CALayer * layer, 
     transform = CATransform3DRotate(transform, M_PI, 0.0f, 1.0f, 0.0f);
     layer.transform = CATransform3DTranslate(transform, 0.0f, -CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
     layer.opacity = 1.0f - 0.2*fabs(speed);
-    return 2 * ADLivelyDefaultDuration;
+    return 2 * ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformTilt = ^(CALayer * layer, float speed){
@@ -66,14 +66,14 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformTilt = ^(CALayer * layer, f
         layer.transform = CATransform3DMakeScale(0.8f, 0.8f, 0.8f);
         layer.opacity = 1.0f - fabs(speed);
     }
-    return 2 * ADLivelyDefaultDuration;
+    return 2 * ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformWave = ^(CALayer * layer, float speed){
     if (speed != 0.0f) { // Don't animate the initial state
         layer.transform = CATransform3DMakeTranslation(-layer.bounds.size.width/2.0f, 0.0f, 0.0f);
     }
-    return ADLivelyDefaultDuration;
+    return ADLivelyTableViewDefaultDuration;
 };
 
 @implementation ADLivelyTableView

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-extern NSTimeInterval ADLivelyDefaultDuration;
+extern NSTimeInterval ADLivelyTableViewDefaultDuration;
 typedef NSTimeInterval (^ADLivelyTableViewTransform)(CALayer * layer, float speed);
 
 extern ADLivelyTableViewTransform ADLivelyTableViewTransformCurl;
