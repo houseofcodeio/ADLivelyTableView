@@ -9,5 +9,5 @@ Pod::Spec.new do |spec|
   spec.source       = { :git => 'https://github.com/applidium/ADLivelyTableView.git', :tag => "v#{spec.version}" }
   spec.source_files = '*.{h,m}'
   spec.framework    = 'Foundation'
-  spec.requires_arc = false
+  spec.requires_arc = true
 end
