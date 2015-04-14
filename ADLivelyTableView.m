@@ -11,7 +11,7 @@
 
 NSTimeInterval ADLivelyTableViewDefaultDuration = 0.2;
 
-CGFloat CGFloatSign(CGFloat value) {
+CGFloat TableViewCGFloatSign(CGFloat value) {
     if (value < 0) {
         return -1.0f;
     }
@@ -45,18 +45,18 @@ ADLivelyTableViewTransform ADLivelyTableViewTransformFan = ^(CALayer * layer, fl
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformFlip = ^(CALayer * layer, float speed){
     CATransform3D transform = CATransform3DIdentity;
-    transform = CATransform3DTranslate(transform, 0.0f, CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
-    transform = CATransform3DRotate(transform, CGFloatSign(speed) * M_PI/2, 1.0f, 0.0f, 0.0f);
-    layer.transform = CATransform3DTranslate(transform, 0.0f, -CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
+    transform = CATransform3DTranslate(transform, 0.0f, TableViewCGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
+    transform = CATransform3DRotate(transform, TableViewCGFloatSign(speed) * M_PI/2, 1.0f, 0.0f, 0.0f);
+    layer.transform = CATransform3DTranslate(transform, 0.0f, -TableViewCGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
     layer.opacity = 1.0f - fabs(speed);
     return 2 * ADLivelyTableViewDefaultDuration;
 };
 
 ADLivelyTableViewTransform ADLivelyTableViewTransformHelix = ^(CALayer * layer, float speed){
     CATransform3D transform = CATransform3DIdentity;
-    transform = CATransform3DTranslate(transform, 0.0f, CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
+    transform = CATransform3DTranslate(transform, 0.0f, TableViewCGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
     transform = CATransform3DRotate(transform, M_PI, 0.0f, 1.0f, 0.0f);
-    layer.transform = CATransform3DTranslate(transform, 0.0f, -CGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
+    layer.transform = CATransform3DTranslate(transform, 0.0f, -TableViewCGFloatSign(speed) * layer.bounds.size.height/2.0f, 0.0f);
     layer.opacity = 1.0f - 0.2*fabs(speed);
     return 2 * ADLivelyTableViewDefaultDuration;
 };
