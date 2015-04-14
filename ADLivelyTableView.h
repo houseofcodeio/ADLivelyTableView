@@ -1,4 +1,4 @@
-//
+//DLivelyTransform
 //  ADLivelyTableView.h
 //  ADLivelyTableView
 //
@@ -9,22 +9,22 @@
 #import <UIKit/UIKit.h>
 
 extern NSTimeInterval ADLivelyDefaultDuration;
-typedef NSTimeInterval (^ADLivelyTransform)(CALayer * layer, float speed);
+typedef NSTimeInterval (^ADLivelyTableViewTransform)(CALayer * layer, float speed);
 
-extern ADLivelyTransform ADLivelyTransformCurl;
-extern ADLivelyTransform ADLivelyTransformFade;
-extern ADLivelyTransform ADLivelyTransformFan;
-extern ADLivelyTransform ADLivelyTransformFlip;
-extern ADLivelyTransform ADLivelyTransformHelix;
-extern ADLivelyTransform ADLivelyTransformTilt;
-extern ADLivelyTransform ADLivelyTransformWave;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformCurl;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformFade;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformFan;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformFlip;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformHelix;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformTilt;
+extern ADLivelyTableViewTransform ADLivelyTableViewTransformWave;
 
 @interface ADLivelyTableView : UITableView <UITableViewDelegate> {
     id <UITableViewDelegate>  _preLivelyDelegate;
     CGPoint _lastScrollPosition;
     CGPoint _currentScrollPosition;
-    ADLivelyTransform _transformBlock;
+    ADLivelyTableViewTransform _transformBlock;
 }
 - (CGPoint)scrollSpeed;
-- (void)setInitialCellTransformBlock:(ADLivelyTransform)block;
+- (void)setInitialCellTransformBlock:(ADLivelyTableViewTransform)block;
 @end
